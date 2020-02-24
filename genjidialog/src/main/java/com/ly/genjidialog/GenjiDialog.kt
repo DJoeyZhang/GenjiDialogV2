@@ -3,6 +3,8 @@ package com.ly.genjidialog
 import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.os.Looper
 import android.view.*
@@ -399,7 +401,9 @@ open class GenjiDialog : DialogFragment() {
                 dialogOptions.exitAnimator = it
             }
             //设置dialog的statusBarColor
-            window.statusBarColor = dialogOptions.dialogStatusBarColor
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                window.statusBarColor = dialogOptions.dialogStatusBarColor
+            }
             //设置dialog的statusBar的显示模式
             dialogOptions.setStatusBarModeFun.invoke(this)
             //设置属性
